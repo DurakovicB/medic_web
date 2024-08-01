@@ -12,6 +12,7 @@ var userLogic = {
             },
             success: function(response) {
                 if (response.status == 'success') {
+                    window.location.href='/medic_web/home.html'
 
                 } else {
                     alert(response.message);
@@ -22,3 +23,25 @@ var userLogic = {
         });
     },
 }
+
+function loadContent(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('content').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading content:', error));
+}
+
+function login() {
+    loadContent('login.html');
+}
+
+function home() {
+    loadContent('home.html');
+}
+
+page('/', login);
+page('/home', home);
+
+page.start();
