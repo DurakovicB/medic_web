@@ -4,33 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">         
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="">Log out</a>
-                </li>
-            </ul>
+    <header class="d-flex justify-content-end p-3 bg-dark text-white">
+        <button class="btn btn-danger" onclick="userService.logout()">Logout</button>
+    </header>
+    <main class="container mt-4">
+        <div class="d-flex justify-content-between mb-3">
+            <h1>Admin Dashboard</h1>
+            <button class="btn btn-success" onclick="">Register (+)</button>
         </div>
-    </nav>
-
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                Welcome
-            </div>
-        </div>
-    </div>
-    
-    <script src="https://unpkg.com/page/page.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Last Login Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Bilal Durakovic</td>
+                    <td>durakovicb</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="userService.showInfo(1)">Show Info</button>
+                        <button class="btn btn-warning btn-sm" onclick="userService.blockUser(1)">Block</button>
+                        <button class="btn btn-danger btn-sm" onclick="userService.deleteUser(1)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ahmed Durakovic</td>
+                    <td>durakovica</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="userService.showInfo(2)">Show Info</button>
+                        <button class="btn btn-warning btn-sm" onclick="userService.blockUser(2)">Block</button>
+                        <button class="btn btn-danger btn-sm" onclick="userService.deleteUser(2)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
