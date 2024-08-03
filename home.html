@@ -13,7 +13,7 @@
     <main class="container mt-4">
         <div class="d-flex justify-content-between mb-3">
             <h1>Admin Dashboard</h1>
-            <button class="btn btn-success" onclick="">Register (+)</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#addUserModal">Register (+)</button>
         </div>
         <table class="table table-striped">
             <thead class="thead-dark">
@@ -60,7 +60,7 @@
             <form id="addUserForm">
               <div class="modal-header">
                 <h5 class="modal-title" id="addUserModalLabel" data-bs-dismiss="modal">Add User</h5>
-                <button type="button" class = "btn-close" data-bs-dismiss="modal" ; aria-label="Close"></button>
+                <button type="button" class = "btn-close" onclick="$('#addUserModal').modal('hide');" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <div>
@@ -86,7 +86,7 @@
             
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" onclick="$('#addUserModal').modal('hide');" >Close</button>
                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
               </div>
             </form>
@@ -99,7 +99,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">User Details</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" onclick="$('#editUserModal').modal('hide');" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -128,14 +128,20 @@
                     <input name="image" id="image" type="text" class="form-control required" placeholder="Enter image link">
                   </div>
                   <div class="form-group">
+                    <label>Status</label>
+                    <input name="status" id="status" type="text" class="form-control required" placeholder="Enter status" >
+                  </div>
+                  <div class="form-group">
                     <label>Date of Birth</label>
                     <input name="date_of_birth" id="date_of_birth" type="date" class="form-control required" >
                   </div>
                 </div>
             </div>  
             <div class="modal-footer">
-                <button class="btn btn-warning btn-sm" onclick="userLogic.blockCurrent()">Block</button>
+                <button class="btn btn-warning" onclick="userLogic.blockCurrent()">Block</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="$('#editUserModal').modal('hide');" >Close</button>
+                <button class="btn btn-success" onclick="userLogic.update()">Update Changes</button>
+
             </div>
           </div>
         </div>

@@ -4,6 +4,14 @@ var userLogic = {
   
     init:function(){
         userLogic.populateDashboard();
+
+        $('#addUserForm').validate({
+            submitHandler: function(form) {
+              var user = Object.fromEntries((new FormData(form)).entries());
+              console.log(user);
+              userLogic.add(user);
+            }
+          });
     },
 
     login: function() {
@@ -83,12 +91,37 @@ var userLogic = {
                     $("#orders").val(data.orders);
                     $("#last_login_date").val(data.last_login_date);
                     $("#image").val(data.image);
+                    $("#status").val(data.status);
                     $("#date_of_birth").val(data.date_of_birth);
-
 
                 $("#editUserModal").modal("show");
                 }});
+      },
+      update:function update(){
+        var user = {};
+        user.name=$("#name").val();
+        user.username=$("#username").val();
+        user.orders=$("#orders").val();
+        user.image=$("#image").val();
+        user.status=$("#status").val();
+        user.date_of_birth=$("#date_of_birth").val();
+
+        $.ajax({
+            url: '/medic_api/users/update/' + $('#id').val(),
+            type: 'PUT',
+            data: JSON.stringify(user),
+            contentType: "application/json",
+            dataType: "json",
+            beforeSend: function(xhr){
+            },
+            success: function(result) {
+              console.log(result);
+              $("#editUserModal").modal("hide");
+              userLogic.populateDashboard();
+            }
+          });
       }
+
 }
 
 $(document).ready(function() {
