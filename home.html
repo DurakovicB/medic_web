@@ -24,7 +24,7 @@
                     <th>Last Login Date</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="userTableBody">
                 <tr>
                     <td>1</td>
                     <td>Bilal Durakovic</td>
@@ -48,8 +48,100 @@
             </tbody>
         </table>
     </main>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="userLogic.js"></script>
+
+    <!-- add user window-->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="addUserForm">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel" data-bs-dismiss="modal">Add User</h5>
+                <button type="button" class = "btn-close" data-bs-dismiss="modal" ; aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <label>Name</label>
+                  <input name="fullname" type="text" class="form-control required" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                  <label>Username</label>
+                  <input name="username" type="text" class="form-control required" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                  <label>Orders</label>
+                  <input name="orders" type="text" class="form-control required" placeholder="Enter number of orders">
+                </div>
+                <div class="form-group">
+                  <label>Image URL</label>
+                  <input name="image" type="text" class="form-control required" placeholder="Enter image link">
+                </div>
+                <div class="form-group">
+                  <label>Date of Birth</label>
+                  <input name="date_of_birth" type="date" class="form-control required" >
+                </div>
+            
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    <!-- edit user window-->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">User Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                  <div>
+                    <label>ID</label>
+                    <input name="id" id="id" type="text" class="form-control required" disabled="true">
+                  </div>
+                  <div>
+                    <label>Name</label>
+                    <input name="fullname" id="name" type="text" class="form-control required" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input name="username" id="username" type="text" class="form-control required" placeholder="Enter username">
+                  </div>
+                  <div class="form-group">
+                    <label>Orders</label>
+                    <input name="orders" id="orders" type="text" class="form-control required" placeholder="Enter number of orders">
+                  </div>
+                  <div class="form-group">
+                    <label>Last Login Date</label>
+                    <input name="last_login_date" id="last_login_date" type="text" class="form-control required" disabled="true">
+                  </div>
+                  <div class="form-group">
+                    <label>Image URL</label>
+                    <input name="image" id="image" type="text" class="form-control required" placeholder="Enter image link">
+                  </div>
+                  <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input name="date_of_birth" id="date_of_birth" type="date" class="form-control required" >
+                  </div>
+                </div>
+            </div>  
+            <div class="modal-footer">
+                <button class="btn btn-warning btn-sm" onclick="userLogic.blockCurrent()">Block</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="$('#editUserModal').modal('hide');" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
+
+    
+
 </html>
