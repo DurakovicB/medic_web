@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                   <label>Orders</label>
-                  <input name="orders" type="text" class="form-control required" placeholder="Enter number of orders">
+                  <input name="orders" type="number" min="0" max="10" class="form-control required" placeholder="Enter number of orders">
                 </div>
                 <div class="form-group">
                   <label>Image URL</label>
@@ -88,7 +88,10 @@
               <button type="button" class="btn-close" onclick="$('#editUserModal').modal('hide');" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
+              <div class="image-container">
+                <img class="card-img-top" id="imageDiv" src="" alt="User image">
+              </div>                
+                  <div class="form-group">
                   <div>
                     <label>ID</label>
                     <input name="id" id="id" type="text" class="form-control required" disabled="true">
@@ -103,7 +106,7 @@
                   </div>
                   <div class="form-group">
                     <label>Orders</label>
-                    <input name="orders" id="orders" type="text" class="form-control required" placeholder="Enter number of orders">
+                    <input name="orders" id="orders" type="number" class="form-control required" min="0" max="10" placeholder="Enter number of orders">
                   </div>
                   <div class="form-group">
                     <label>Last Login Date</label>
@@ -133,6 +136,38 @@
         </div>
       </div>
 </body>
+<script>
+  var token = localStorage.getItem("token");
+  if (token) {
+    userLogic.init();
+  } else {
+    window.location.replace("login.html");
+  }
+
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function(id) {
+      userLogic.showEditUserModal($(this).data("id"));
+        });
+});
+</script>
+<style>
+  .clickable-row {
+            cursor: pointer;
+        }
+  #imageDiv {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+.image-container {
+    display: flex; /* Uses flexbox to center the image vertically and horizontally */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    height: 100%; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
+}
+</style>
 
     
 
