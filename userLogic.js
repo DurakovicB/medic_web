@@ -27,6 +27,8 @@ var userLogic = {
             },
             success: async function(response) {
                 localStorage.setItem("token", response.token);
+                localStorage.setItem("username", response.username);
+
                 await spinLoaderForTwoSeconds();
                 window.location.href='/medic_web/home.html';
             },
@@ -66,7 +68,7 @@ var userLogic = {
             type: 'POST',
             beforeSend: function(xhr){},
             success: function(result) {
-              UserService.populateDashboard();
+              userLogic.populateDashboard();
             }
           });
         }
@@ -140,6 +142,26 @@ var userLogic = {
         }
         });
       },
+      logout: function() {
+        username=localStorage.getItem("username");
+        $.ajax({
+          url: '/medic_api/logout',
+          type: 'POST',
+          data: JSON.stringify({ username: username }),
+          contentType: "application/json",
+          dataType: "json",
+          beforeSend: function(xhr){
+          },
+          success: function(result) {
+            localStorage.clear();
+            window.location.href='/medic_web/login.html';
+        },
+          error: function (xhr, tst, err) {
+            alert(JSON.parse(xhr.responseText)["message"]);
+        }
+        });
+      },
+
 
 }
 
