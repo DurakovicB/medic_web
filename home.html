@@ -25,32 +25,14 @@
                 </tr>
             </thead>
             <tbody id="userTableBody">
-                <tr>
-                    <td>1</td>
-                    <td>Bilal Durakovic</td>
-                    <td>durakovicb</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="userService.showInfo(1)">Show Info</button>
-                        <button class="btn btn-warning btn-sm" onclick="userService.blockUser(1)">Block</button>
-                        <button class="btn btn-danger btn-sm" onclick="userService.deleteUser(1)">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ahmed Durakovic</td>
-                    <td>durakovica</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="userService.showInfo(2)">Show Info</button>
-                        <button class="btn btn-warning btn-sm" onclick="userService.blockUser(2)">Block</button>
-                        <button class="btn btn-danger btn-sm" onclick="userService.deleteUser(2)">Delete</button>
-                    </td>
-                </tr>
+                
             </tbody>
         </table>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="userLogic.js"></script>
 
     <!-- add user window-->
@@ -63,9 +45,9 @@
                 <button type="button" class = "btn-close" onclick="$('#addUserModal').modal('hide');" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <div>
+                <div class="form-group">
                   <label>Name</label>
-                  <input name="fullname" type="text" class="form-control required" placeholder="Enter name">
+                  <input name="name" type="text" class="form-control required" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                   <label>Username</label>
@@ -80,6 +62,10 @@
                   <input name="image" type="text" class="form-control required" placeholder="Enter image link">
                 </div>
                 <div class="form-group">
+                  <label>Status</label>
+                  <input name="status" type="text" class="form-control required" placeholder="Enter status" >
+                </div>
+                <div class="form-group">
                   <label>Date of Birth</label>
                   <input name="date_of_birth" type="date" class="form-control required" >
                 </div>
@@ -87,7 +73,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" onclick="$('#addUserModal').modal('hide');" >Close</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                <button type="submit" class="btn btn-primary" onclick="" >Add User</button>
               </div>
             </form>
           </div>
@@ -109,7 +95,7 @@
                   </div>
                   <div>
                     <label>Name</label>
-                    <input name="fullname" id="name" type="text" class="form-control required" placeholder="Enter name">
+                    <input name="name" id="name" type="text" class="form-control required" placeholder="Enter name">
                   </div>
                   <div class="form-group">
                     <label>Username</label>

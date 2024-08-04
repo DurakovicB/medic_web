@@ -3,8 +3,6 @@ var userLogic = {
         
   
     init:function(){
-        userLogic.populateDashboard();
-
         $('#addUserForm').validate({
             submitHandler: function(form) {
               var user = Object.fromEntries((new FormData(form)).entries());
@@ -12,6 +10,7 @@ var userLogic = {
               userLogic.add(user);
             }
           });
+        userLogic.populateDashboard();
     },
 
     login: function() {
@@ -120,12 +119,29 @@ var userLogic = {
               userLogic.populateDashboard();
             }
           });
-      }
+      },
+      add: function(user) {
+        $.ajax({
+          url: '/medic_api/register',
+          type: 'POST',
+          data: JSON.stringify(user),
+          contentType: "application/json",
+          dataType: "json",
+          beforeSend: function(xhr){
+          },
+          success: function(result) {
+            $('#addUserForm').validate();
+            $("#addUserModal").modal("hide");
+            $('#addUserForm').trigger("reset");
+            userLogic.populateDashboard();
+          }
+        });
+      },
 
 }
 
 $(document).ready(function() {
-    userLogic.populateDashboard();
+    userLogic.init();
   });
 
 
