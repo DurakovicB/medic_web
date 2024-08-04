@@ -14,9 +14,10 @@ var userLogic = {
         userLogic.populateDashboard();
     },
 
-    login: function(user) {
+    login: async function(user) {
         var username = $("#username").val();
         var password = $("#password").val();
+        await spinLoaderForTwoSeconds();
 
         $.ajax({
             url: 'http://localhost/medic_api/login',
@@ -25,11 +26,10 @@ var userLogic = {
                 username: username,
                 password: md5(password)
             },
-            success: async function(response) {
+            success:  function(response) {
                 localStorage.setItem("token", response.token);
                 localStorage.setItem("username", response.username);
 
-                await spinLoaderForTwoSeconds();
                 window.location.href='/medic_web/home.html';
             },
             error: function (xhr, tst, err) {
