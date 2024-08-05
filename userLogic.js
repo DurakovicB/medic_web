@@ -30,7 +30,7 @@ var userLogic = {
                 localStorage.setItem("token", response.token);
                 localStorage.setItem("username", response.username);
 
-                window.location.href='/medic_web/home.html';
+                window.location.href='https://lobster-app-7g7zh.ondigitalocean.app/home.html';
             },
             error: function (xhr, tst, err) {
                 alert(JSON.parse(xhr.responseText)["message"]);
@@ -154,7 +154,7 @@ var userLogic = {
           },
           success: function(result) {
             localStorage.clear();
-            window.location.href='/medic_web/login.html';
+            window.location.href='https://lobster-app-7g7zh.ondigitalocean.app/login.html';
         },
           error: function (xhr, tst, err) {
             alert(JSON.parse(xhr.responseText)["message"]);
