@@ -20,7 +20,7 @@ var userLogic = {
         await spinLoaderForTwoSeconds();
 
         $.ajax({
-            url: 'http://localhost/medic_api/login',
+            url: 'https://lobster-app-7g7zh.ondigitalocean.app/login',
             type: 'POST',
             data: {
                 username: username,
@@ -40,7 +40,7 @@ var userLogic = {
 
     populateDashboard: function() {
         $.ajax({
-            url: '/medic_api/users',
+            url: 'https://lobster-app-7g7zh.ondigitalocean.app//users',
             type: 'GET',
             success: function(response) {
                 var userTableBody = $('#userTableBody');
@@ -64,7 +64,7 @@ var userLogic = {
     block: function(id) {
         if (confirm('Are you sure?') == true) {
           $.ajax({
-            url: '/medic_api/users/block/' + id,
+            url: 'https://lobster-app-7g7zh.ondigitalocean.app/users/block/' + id,
             type: 'POST',
             beforeSend: function(xhr){},
             success: function(result) {
@@ -76,7 +76,7 @@ var userLogic = {
 
       showEditUserModal: function showEditUserModal(id) {
         $.ajax({
-                url: '/medic_api/users/details/' + id,
+                url: 'https://lobster-app-7g7zh.ondigitalocean.app/users/details/' + id,
                 type: 'GET',
                 contentType: "application/json",
                 dataType: "json",
@@ -108,7 +108,7 @@ var userLogic = {
         user.last_login_date=$("#last_login_date").val();
 
         $.ajax({
-            url: '/medic_api/users/update/' + $('#id').val(),
+            url: 'https://lobster-app-7g7zh.ondigitalocean.app/users/update/' + $('#id').val(),
             type: 'PUT',
             data: JSON.stringify(user),
             contentType: "application/json",
@@ -124,7 +124,7 @@ var userLogic = {
       },
       add: function(user) {
         $.ajax({
-          url: '/medic_api/register',
+          url: 'https://lobster-app-7g7zh.ondigitalocean.app/register',
           type: 'POST',
           data: JSON.stringify(user),
           contentType: "application/json",
@@ -145,7 +145,7 @@ var userLogic = {
       logout: function() {
         username=localStorage.getItem("username");
         $.ajax({
-          url: '/medic_api/logout',
+          url: 'https://lobster-app-7g7zh.ondigitalocean.app/logout',
           type: 'POST',
           data: JSON.stringify({ username: username }),
           contentType: "application/json",
