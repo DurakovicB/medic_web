@@ -20,7 +20,7 @@ var userLogic = {
         await spinLoaderForTwoSeconds();
 
         $.ajax({
-            url: 'https://lobster-app-7g7zh.ondigitalocean.app/login',
+            url: 'https://clownfish-app-2sdqr.ondigitalocean.app/login',
             type: 'POST',
             data: {
                 username: username,
@@ -30,7 +30,7 @@ var userLogic = {
                 localStorage.setItem("token", response.token);
                 localStorage.setItem("username", response.username);
 
-                window.location.href='https://lobster-app-7g7zh.ondigitalocean.app//home.html';
+                window.location.href='https://lobster-app-7g7zh.ondigitalocean.app/home.html';
             },
             error: function (xhr, tst, err) {
                 alert(JSON.parse(xhr.responseText)["message"]);
@@ -40,7 +40,7 @@ var userLogic = {
 
     populateDashboard: function() {
         $.ajax({
-            url: 'https://lobster-app-7g7zh.ondigitalocean.app/users',
+            url: 'https://clownfish-app-2sdqr.ondigitalocean.app/users',
             type: 'GET',
             success: function(response) {
                 var userTableBody = $('#userTableBody');
@@ -64,7 +64,7 @@ var userLogic = {
     block: function(id) {
         if (confirm('Are you sure?') == true) {
           $.ajax({
-            url: 'https://lobster-app-7g7zh.ondigitalocean.app/users/block/' + id,
+            url: 'https://clownfish-app-2sdqr.ondigitalocean.app/users/block/' + id,
             type: 'POST',
             beforeSend: function(xhr){},
             success: function(result) {
@@ -76,7 +76,7 @@ var userLogic = {
 
       showEditUserModal: function showEditUserModal(id) {
         $.ajax({
-                url: 'https://lobster-app-7g7zh.ondigitalocean.app/users/details/' + id,
+                url: 'https://clownfish-app-2sdqr.ondigitalocean.app/users/details/' + id,
                 type: 'GET',
                 contentType: "application/json",
                 dataType: "json",
@@ -108,7 +108,7 @@ var userLogic = {
         user.last_login_date=$("#last_login_date").val();
 
         $.ajax({
-            url: 'https://lobster-app-7g7zh.ondigitalocean.app/users/update/' + $('#id').val(),
+            url: 'https://clownfish-app-2sdqr.ondigitalocean.app/users/update/' + $('#id').val(),
             type: 'PUT',
             data: JSON.stringify(user),
             contentType: "application/json",
@@ -124,7 +124,7 @@ var userLogic = {
       },
       add: function(user) {
         $.ajax({
-          url: 'https://lobster-app-7g7zh.ondigitalocean.app/register',
+          url: 'https://clownfish-app-2sdqr.ondigitalocean.app/register',
           type: 'POST',
           data: JSON.stringify(user),
           contentType: "application/json",
@@ -145,7 +145,7 @@ var userLogic = {
       logout: function() {
         username=localStorage.getItem("username");
         $.ajax({
-          url: 'https://lobster-app-7g7zh.ondigitalocean.app/logout',
+          url: 'https://clownfish-app-2sdqr.ondigitalocean.app/logout',
           type: 'POST',
           data: JSON.stringify({ username: username }),
           contentType: "application/json",
