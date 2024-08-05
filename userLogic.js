@@ -30,7 +30,7 @@ var userLogic = {
                 localStorage.setItem("token", response.token);
                 localStorage.setItem("username", response.username);
 
-                window.location.href='https://lobster-app-7g7zh.ondigitalocean.app/home.html';
+                window.location.href='https://lobster-app-7g7zh.ondigitalocean.app//home.html';
             },
             error: function (xhr, tst, err) {
                 alert(JSON.parse(xhr.responseText)["message"]);
@@ -40,7 +40,7 @@ var userLogic = {
 
     populateDashboard: function() {
         $.ajax({
-            url: 'https://lobster-app-7g7zh.ondigitalocean.app//users',
+            url: 'https://lobster-app-7g7zh.ondigitalocean.app/users',
             type: 'GET',
             success: function(response) {
                 var userTableBody = $('#userTableBody');
